@@ -4,6 +4,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <tuple>
 
 #include "MotDePasse.h"
 
@@ -37,15 +38,8 @@ void ouvrirPorte() {
 
 }
 
-void genererAutomate() {
 
 
-}
-
-void affronterBoss() {
-	genererAutomate();
-
-}
 
 void reinitialiseDonnees() {
 
@@ -61,31 +55,337 @@ void menu() {
 
 
 
-void lirePorte(string fichierPorte) {
-	ifstream FichierPorte(fichierPorte, ios::in);
-	string temp;
+void affronterBoss() {
+	//genererAutomate();
 
-	lowerCase.push_back('a');
-	lowerCase.push_back('b');
-	lowerCase.push_back('c');
-	lowerCase.push_back('d');
-	lowerCase.push_back('e');
-	lowerCase.push_back('f');
-
-	upperCase.push_back('A');
-	upperCase.push_back('B');
-	upperCase.push_back('C');
-	upperCase.push_back('D');
-	upperCase.push_back('E');
-	upperCase.push_back('F');
-
-	vector<MotDePasse*> mdpListe;
+}
 
 typedef struct node
 {
-    int data;
-    vector<struct node *> Max;
+	char data;
+	vector<struct node *> pointeurs;
 }	Node;
+
+struct node A;
+struct node A1;
+struct node A2;
+struct node A3;
+
+struct node B;
+struct node B1;
+struct node B2;
+struct node B3;
+
+struct node C;
+struct node C1;
+struct node C2;
+
+struct node D;
+struct node D1;
+struct node D2;
+
+struct node E;
+struct node E1;
+struct node E2;
+
+struct node F;
+struct node F1;
+struct node F2;
+
+struct node S;
+struct node S1;
+struct node S2;
+struct node S3;
+struct node S4;
+struct node S5;
+
+int compteurA = 0;
+int compteurB = 0;
+int compteurC = 0;
+int compteurD = 0;
+int compteurE = 0;
+int compteurF = 0;
+int compteurS = 0;
+int compteurMots = 0; 
+vector<string> listeMots;
+int compteurCaracteres = 0;
+void nodeInit() {
+	
+	struct node* structTemp;
+
+	*structTemp = A1;
+	A.pointeurs.push_back(structTemp);
+	*structTemp = A2;
+	A.pointeurs.push_back(structTemp);
+	*structTemp = A3;
+	A.pointeurs.push_back(structTemp);
+
+	*structTemp = B1;
+	B.pointeurs.push_back(structTemp);
+	*structTemp = B2;
+	B.pointeurs.push_back(structTemp);
+	*structTemp = B3;
+	B.pointeurs.push_back(structTemp);
+
+	*structTemp = C1;
+	C.pointeurs.push_back(structTemp);
+	*structTemp = C2;
+	C.pointeurs.push_back(structTemp);
+
+
+	*structTemp = D1;
+	D.pointeurs.push_back(structTemp);
+	*structTemp = D2;
+	D.pointeurs.push_back(structTemp);
+
+
+	*structTemp = E1;
+	E.pointeurs.push_back(structTemp);
+	*structTemp = E2;
+	E.pointeurs.push_back(structTemp);
+
+	*structTemp = F1;
+	F.pointeurs.push_back(structTemp);
+	*structTemp = F2;
+	F.pointeurs.push_back(structTemp);
+
+	*structTemp = S1;
+	S.pointeurs.push_back(structTemp);
+	*structTemp = S2;
+	S.pointeurs.push_back(structTemp);
+	*structTemp = S3;	
+	S.pointeurs.push_back(structTemp);
+	*structTemp = S4;
+	S.pointeurs.push_back(structTemp);
+	*structTemp = S5;
+	S.pointeurs.push_back(structTemp);
+
+}
+vector<tuple<string, string, bool>> portes;
+
+struct node genererAutomate(char source, char terminal) {
+
+	if (compteurA == 1 && source == 'A')
+	{
+		A1.data = terminal;
+		compteurA++;
+		return A1;
+	}
+
+	if (compteurA == 2 && source == 'A')
+	{
+		A2.data = terminal;
+		compteurA++;
+		return A2;
+	}
+
+	if (compteurA == 3 && source == 'A')
+	{
+		A3.data = terminal;
+		compteurA++;
+		return A3;
+	}
+
+
+	if (compteurB == 1 && source == 'B')
+	{
+		B1.data = terminal;
+		compteurB++;
+		return B1;
+	}
+
+	if (compteurB == 2 && source == 'B')
+	{
+		B2.data = terminal;
+		compteurB++;
+		return B2;
+	}
+
+	if (compteurB == 3 && source == 'B')
+	{
+		B3.data = terminal;
+		compteurB++;
+		return B3;
+	}
+
+	if (compteurC == 1 && source == 'C')
+	{
+		C1.data = terminal;
+		compteurC++;
+		return C1;
+	}
+
+	if (compteurC == 2 && source == 'C')
+	{
+		C2.data = terminal;
+		compteurC++;
+		return C2;
+	}
+
+	if (compteurD == 1 && source == 'D')
+	{
+		D1.data = terminal;
+		compteurD++;
+		return D1;
+	}
+
+	if (compteurD == 2 && source == 'D')
+	{
+		D2.data = terminal;
+		compteurD++;
+		return D2;
+	}
+
+	if (compteurE == 1 && source == 'E')
+	{
+		E1.data = terminal;
+		compteurE++;
+		return E1;
+	}
+
+	if (compteurE == 2 && source == 'E')
+	{
+		E2.data = terminal;
+		compteurE++;
+		return E2;
+	}
+
+	if (compteurF == 1 && source == 'F')
+	{
+		F1.data = terminal;
+		compteurF++;
+		return F1;
+	}
+
+	if (compteurF == 2 && source == 'F')
+	{
+		F2.data = terminal;
+		compteurF++;
+		return F2;
+	}
+
+	if (compteurS == 1 && source == 'S')
+	{
+		S1.data = terminal;
+		compteurS++;
+		return S1;
+	}
+	if (compteurS == 2 && source == 'S')
+	{
+		S2.data = terminal;
+		compteurS++;
+		return S2;
+	}
+	if (compteurS == 3 && source == 'S')
+	{
+		S3.data = terminal;
+		compteurS++;
+		return S3;
+	}
+	if (compteurS == 4 && source == 'S')
+	{
+		S4.data = terminal;
+		compteurS++;
+		return S4;
+	}
+	if (compteurS == 5 && source == 'S')
+	{
+		S5.data = terminal;
+		compteurS++;
+		return S5;
+	}
+}
+
+void linkAutomate(struct node source, char destination) {
+
+	switch (destination) {
+		case 'A':
+			struct node* structTemp;
+			*structTemp = A;
+			source.pointeurs.push_back(structTemp);
+			break;
+
+		case 'B':
+			struct node* structTemp;
+			*structTemp = B;
+			source.pointeurs.push_back(structTemp);
+			break;
+
+		case 'C':
+			struct node* structTemp;
+			*structTemp = C;
+			source.pointeurs.push_back(structTemp);
+			break;
+
+		case 'D':
+			struct node* structTemp;
+			*structTemp = D;
+			source.pointeurs.push_back(structTemp);
+			break;
+
+		case 'E':
+			struct node* structTemp;
+			*structTemp = E;
+			source.pointeurs.push_back(structTemp);
+			break;
+
+		case 'F':
+			struct node* structTemp;
+			*structTemp = F;
+			source.pointeurs.push_back(structTemp);
+			break;
+
+		case 'S':
+			struct node* structTemp;
+			*structTemp = S;
+			source.pointeurs.push_back(structTemp);
+			break;
+	}
+		
+
+	
+	return;
+}
+
+void genererMots() {
+
+	for (int i = 0; i < S.pointeurs.size(); i++)
+	{
+		if (S.pointeurs[i] != nullptr && compteurCaracteres < 10 && S.data != ' ') {
+			listeMots[compteurMots] += S.data;
+			compteurCaracteres++;
+
+			genererMots(*(S.pointeurs[i]));
+		}
+		else break;
+		compteurMots++;
+	}
+
+
+}
+
+void genererMots(struct node source) {
+
+	for (int i = 0; i < source.pointeurs.size(); i++)
+	{
+		if (source.pointeurs[i] != nullptr && compteurCaracteres < 10 && source.data != ' ') {
+			listeMots[compteurMots][compteurCaracteres] = source.data;
+			compteurCaracteres++;
+
+			genererMots(*(source.pointeurs[i]));
+		}
+		else if (source.data == ' ') {
+			compteurMots++;
+			compteurCaracteres--;
+			break;
+		}
+	}
+
+}
+
+void lirePorte(string fichierPorte) {
+	ifstream FichierPorte(fichierPorte, ios::in);
+	nodeInit();
 
 
 	if (FichierPorte) {
@@ -93,99 +393,49 @@ typedef struct node
 			int i = 0;
 			//getline(FichierPorte, temp);
 			while (!ws(FichierPorte).eof()) {
-				FichierPorte >> temp;
-				MotDePasse* mdpTemp = new MotDePasse();
 				//Multimap? , multilinkedList
 				char temp = FichierPorte.get();
-				char character = "";
-				char lastCharacter;
-				while(character != "\n"){
-					if (character == " ");
+				char character = ' ';
+				char source;
+				struct node nodeSource;
+				while(character != '\n'){
+					if (character == ' ');
 					else {
 						character = FichierPorte.get();
-						lastCharacter = character;
+						source = character;
 						temp = FichierPorte.get();
 						temp = FichierPorte.get();
 						character = FichierPorte.get();
-						if (character == ",")
-							//Link lastcharacter and "";
-						if (character == "a" || character == "b" || character == "c" || character == "d" || character == "e" || character == "f"){													
+						if (character == ',') {
+							//Link source and ""
+							genererAutomate(source, ' ');
+						}
+						//if (character == 'a' || character == 'b' || character == 'c' || character == 'd' || character == 'e' || character == 'f'){													
+						else {	
 							char terminal = character;
 							character = FichierPorte.get();
-							if (character == ",");
-								//link lastCharater and terminal
+							if (character == ',')
+								//link source and terminal
+								genererAutomate(source, terminal);
 							else {
-								//link lastCharacter and terminal + character
+								//link source and terminal + character
+								nodeSource = genererAutomate(source, terminal);
+								linkAutomate(nodeSource, character);
 							}
 						}
 					}
-
+					temp = FichierPorte.get();
 				}
-				temp = getchar();
-				/*
-				if (temp[0] != '{' && temp[0] != '}') {
-					mdpTemp->setSource(temp[0]);
-					for (int j = 0; j < temp.length(); j++)
-					{
-						if (temp[3] != ',' && temp[3] != upperCase[j]) {
-							mdpTemp->setTerminal(temp[3]);
-						}
-						else if (temp[3] != ',') {
-							mdpTemp->setDestination(new MotDePasse(temp[3], nullptr, ' '));
-							break;
-						}
-						else if (temp[3] == ',') {
-							mdpTemp->setStatus(true);
-							break;
-						}
-						if (temp[4] == ',') {
-							mdpTemp->setStatus(true);
-							break;
-						}
-						else if(temp[3] != ','){
-							mdpTemp->setDestination(new MotDePasse(temp[4], nullptr, ' '));
-							break;
-						}
-					}
-				}
-				*/
+				if(temp != '}') temp = FichierPorte.get(); //lire }
+				
+				FichierPorte >> get<0>(portes[i]) >> get<1>(portes[i]); 
+				get<2>(portes[i]) = false;
 
-				/*getline(FichierPorte, temp,'}');
-				size_t found = temp.find_first_of("->{}");
-				while (found != string::npos) {
-					temp[found] = ' ';
-					found = temp.find_first_of("->{}", found + 1);
-				}*/
-				/*for (int j = 0; j < temp.length; j++)
-				{
-					if (temp[j] == '{' || temp[j] == '}' || temp[j] == '-' || temp[j] == '>') j++;
-					else {
-						for (int k = 0; k < upperCase.size(); k++)
-						{
-							if (temp[j] == upperCase[k] && mdp->getSource() == ' ') {
-								mdp->setSource(temp[j]);
-							}
-							else if (temp[j] == lowerCase[k]) {
-								mdp->setDestination(temp[j]);
-							}
-							else {
-								mdp->setTerminal(temp[j]);
-								if (mdp->getTerminal() == mdp->getSource())
-									mdp->setLoop(true);
-							}
-						}
-					}
-				}*/
-
-
-				//Sauvegarder porte possible a ouvrir et leur mot de passe
-				//vector<pair<string, string>> portes;
-				//getline(FichierPorte, temp, '{');
-				cout << temp << endl;
-				mdpListe.push_back(mdpTemp);
-				//FichierPorte >> portes[i].first >> portes[i].second;
 				i++;
+
 			}
+
+			verifierMDP(portes);
 			
 			cout << "Les fichiers ont ete lu correctement.\n";
 			FichierPorte.close();

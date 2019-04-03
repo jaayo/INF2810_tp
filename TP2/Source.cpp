@@ -5,6 +5,7 @@
 #include <fstream>
 #include <tuple>
 
+
 using namespace std;
 
 #define _GLIBCXX_USE_CXX11_ABI 0
@@ -99,6 +100,14 @@ void genererAutomate() {
 
 
 }
+
+
+void concatenerLangage() {
+
+	
+
+}
+
 
 void affronterBoss() {
 	ifstream FichierBoss("Boss.txt", ios::in);
