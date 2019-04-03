@@ -15,36 +15,7 @@ using namespace std;
 vector<char> lowerCase;
 vector<char> upperCase;
 
-void afficherLeCheminParcouru() {
 
-
-}
-
-/*void afficherLeDernierEvenement() {
-bool siGrouffre; // "Cette porte n'est pas un gouffre", "Cette porte est un gouffre, retour � Porte1";
-cout << "Evenement " << Evenement << endl;
-cout << "a. Porte" << numeroPorte << endl << cout << "b. ";
-int i = 0;
-for (i; i < nbrPorte - 1; i++)
-cout << "{" << motDePasse << ", Porte" << i << "," << validation << "}, " << endl;
-cout << "{" << motDePasse << ", Porte" << i + 1 << "," << validation << "}" << endl;
-cout << "c. " << siGouffre << endl;
-
-
-}*/
-
-void ouvrirPorte() {
-
-
-}
-
-
-
-
-void reinitialiseDonnees() {
-
-
-}
 
 void menu() {
 	cout << "\n(a) Entrer dans le labyrinthe" << endl <<
@@ -99,69 +70,76 @@ struct node S3;
 struct node S4;
 struct node S5;
 
-int compteurA = 0;
-int compteurB = 0;
-int compteurC = 0;
-int compteurD = 0;
-int compteurE = 0;
-int compteurF = 0;
-int compteurS = 0;
+int compteurA = 1;
+int compteurB = 1;
+int compteurC = 1;
+int compteurD = 1;
+int compteurE = 1;
+int compteurF = 1;
+int compteurS = 1;
 int compteurMots = 0; 
+
 vector<string> listeMots;
+vector<tuple<string, string, bool>> portes;
+
 int compteurCaracteres = 0;
-void nodeInit() {
+
+void reinitialiseDonnees() {
 	
-	struct node* structTemp;
+	listeMots.push_back("");
 
-	*structTemp = A1;
+	struct node* structTemp = nullptr;
+
+	structTemp = &A1;
 	A.pointeurs.push_back(structTemp);
-	*structTemp = A2;
+	structTemp = &A2;
 	A.pointeurs.push_back(structTemp);
-	*structTemp = A3;
+	structTemp = &A3;
 	A.pointeurs.push_back(structTemp);
 
-	*structTemp = B1;
+	structTemp = &B1;
 	B.pointeurs.push_back(structTemp);
-	*structTemp = B2;
+	structTemp = &B2;
 	B.pointeurs.push_back(structTemp);
-	*structTemp = B3;
+	structTemp = &B3;
 	B.pointeurs.push_back(structTemp);
 
-	*structTemp = C1;
+	structTemp = &C1;
 	C.pointeurs.push_back(structTemp);
-	*structTemp = C2;
+	structTemp = &C2;
 	C.pointeurs.push_back(structTemp);
 
 
-	*structTemp = D1;
+	structTemp = &D1;
 	D.pointeurs.push_back(structTemp);
-	*structTemp = D2;
+	structTemp = &D2;
 	D.pointeurs.push_back(structTemp);
 
 
-	*structTemp = E1;
+	structTemp = &E1;
 	E.pointeurs.push_back(structTemp);
-	*structTemp = E2;
+	structTemp = &E2;
 	E.pointeurs.push_back(structTemp);
 
-	*structTemp = F1;
+	structTemp = &F1;
 	F.pointeurs.push_back(structTemp);
-	*structTemp = F2;
+	structTemp = &F2;
 	F.pointeurs.push_back(structTemp);
 
-	*structTemp = S1;
+	structTemp = &S1;
 	S.pointeurs.push_back(structTemp);
-	*structTemp = S2;
+	structTemp = &S2;
 	S.pointeurs.push_back(structTemp);
-	*structTemp = S3;	
+	structTemp = &S3;	
 	S.pointeurs.push_back(structTemp);
-	*structTemp = S4;
+	structTemp = &S4;
 	S.pointeurs.push_back(structTemp);
-	*structTemp = S5;
+	structTemp = &S5;
 	S.pointeurs.push_back(structTemp);
 
 }
-vector<tuple<string, string, bool>> portes;
+
+
 
 struct node genererAutomate(char source, char terminal) {
 
@@ -299,47 +277,61 @@ struct node genererAutomate(char source, char terminal) {
 void linkAutomate(struct node source, char destination) {
 
 	switch (destination) {
-		case 'A':
-			struct node* structTemp;
-			*structTemp = A;
+	case 'A': {
+			struct node* structTemp = nullptr;
+			structTemp = &A;
 			source.pointeurs.push_back(structTemp);
 			break;
+		}
+			
 
-		case 'B':
-			struct node* structTemp;
-			*structTemp = B;
+	case 'B': {
+			struct node* structTemp = nullptr;
+			structTemp = &B;
 			source.pointeurs.push_back(structTemp);
 			break;
+		}
+			
 
-		case 'C':
-			struct node* structTemp;
-			*structTemp = C;
+		case 'C': {
+			struct node* structTemp = nullptr;
+			structTemp = &C;
 			source.pointeurs.push_back(structTemp);
 			break;
+		}
+			
 
-		case 'D':
-			struct node* structTemp;
-			*structTemp = D;
+		case 'D': {
+			struct node* structTemp = nullptr;
+			structTemp = &D;
 			source.pointeurs.push_back(structTemp);
 			break;
+		}
+			
 
-		case 'E':
-			struct node* structTemp;
-			*structTemp = E;
+		case 'E': {
+			struct node* structTemp = nullptr;
+			structTemp = &E;
 			source.pointeurs.push_back(structTemp);
 			break;
+		}
+			
 
-		case 'F':
-			struct node* structTemp;
-			*structTemp = F;
+		case 'F': {
+			struct node* structTemp = nullptr;
+			structTemp = &F;
 			source.pointeurs.push_back(structTemp);
 			break;
+		}
+			
 
-		case 'S':
-			struct node* structTemp;
-			*structTemp = S;
+		case 'S': {
+			struct node* structTemp = nullptr;
+			structTemp = &S;
 			source.pointeurs.push_back(structTemp);
 			break;
+		}
+			
 	}
 		
 
@@ -347,35 +339,19 @@ void linkAutomate(struct node source, char destination) {
 	return;
 }
 
-void genererMots() {
-
-	for (int i = 0; i < S.pointeurs.size(); i++)
-	{
-		if (S.pointeurs[i] != nullptr && compteurCaracteres < 10 && S.data != ' ') {
-			listeMots[compteurMots] += S.data;
-			compteurCaracteres++;
-
-			genererMots(*(S.pointeurs[i]));
-		}
-		else break;
-		compteurMots++;
-	}
-
-
-}
-
 void genererMots(struct node source) {
 
 	for (int i = 0; i < source.pointeurs.size(); i++)
 	{
-		if (source.pointeurs[i] != nullptr && compteurCaracteres < 10 && source.data != ' ') {
-			listeMots[compteurMots][compteurCaracteres] = source.data;
+		if (source.pointeurs[i] != nullptr && compteurCaracteres < 10 && source.pointeurs[i]->data != ' ') {
+			listeMots[compteurMots][compteurCaracteres+1] = source.pointeurs[i]->data;
 			compteurCaracteres++;
 
 			genererMots(*(source.pointeurs[i]));
 		}
-		else if (source.data == ' ') {
+		else if (source.pointeurs[i]->data == ' ') {
 			compteurMots++;
+			listeMots.push_back("");
 			compteurCaracteres--;
 			break;
 		}
@@ -383,25 +359,132 @@ void genererMots(struct node source) {
 
 }
 
-void lirePorte(string fichierPorte) {
-	ifstream FichierPorte(fichierPorte, ios::in);
-	nodeInit();
+void genererMotsInit() {
 
+	for (int i = 0; i < S.pointeurs.size(); i++)
+	{
+		if (S.pointeurs[i] != nullptr && compteurCaracteres < 10 && S.pointeurs[i]->data != ' ') {
+			listeMots[compteurMots].push_back(S.pointeurs[i]->data);
+				//[compteurCaracteres+1] = S.pointeurs[i]->data;
+			compteurCaracteres++;
+
+			genererMots(*(S.pointeurs[i]));
+		}
+		else if (S.pointeurs[i]->data == ' ') {
+			compteurMots++;
+			listeMots.push_back("");
+			compteurCaracteres--;
+			break;
+		}
+	}
+
+
+}
+
+bool verifierMDP() {
+	bool estGouffre = true;
+	for (int i = 0; i < listeMots.size(); i++)
+	{
+		for (int j = 0; j < portes.size(); j++)
+		{
+			if (listeMots[i] == get<0>(portes[j])) {
+				get<2>(portes[j]) = true;
+			}
+			else
+				estGouffre = false;
+		}
+	}
+	return estGouffre;
+
+}
+
+
+void afficherLeDernierEvenement() {
+
+	ifstream file("Affichage.txt");
+
+	if (file.is_open())
+	{
+		int numberOfLines = 0;
+		string temp;
+
+		while (!ws(file).eof()) {
+			//Sauvegarder porte possible a ouvrir et leur mot de passe
+			//vector<pair<string, string>> portes;
+			getline(file, temp);
+			numberOfLines++;
+		}
+
+		for (int i = 0; i < numberOfLines; i++)
+			getline(file, temp);
+		for (int i = 0; i < 4; i++) {
+			getline(file, temp);
+			cout << temp;
+
+		}
+	}
+}
+void ecrireEvenement(string porteChoisie) {
+
+	ofstream file("Affichage.txt", ios::out);
+
+	if (!file.is_open())
+		cout << "Ya qqchose de bizarre qui sest passee";
+	else {
+
+		bool estGouffre;
+		file << "Evenement ";
+		if (porteChoisie + ".txt" == "Boss.txt")
+			file << "Boss" << endl;
+		else
+			file << "Porte" << endl;
+		file << "a. " << porteChoisie << endl << "b. ";
+		int i = 0;
+		for (int i = 0; i < portes.size(); i++)
+			file << "{" << get<0>(portes[i]) << ", " << get<1>(portes[i]) << ", " << get<2>(portes[i]) << "}, ";
+		i++;
+		file << "{" << get<0>(portes[i]) << ", " << get<1>(portes[i]) << ",";
+		if (get<2>(portes[i]) == 1) file << "valide"; else file << "non valide";
+		file << "} " << endl;
+		if(verifierMDP())
+			file << "c. Cette porte est un gouffre, retour à Porte1." << endl;
+		else 
+			file << "c. Cette porte n'est pas un gouffre." << endl;
+		file << endl;
+	}
+}
+
+void afficherLeCheminParcouru() {
+
+	ifstream file("Affichage.txt");
+
+	if (file.is_open())
+		cout << file.rdbuf();
+	else
+		cout << "Ya qqchose de bizarre qui sest passee";
+}
+
+void ouvrirPorte(string fichierPorte) {
+	string nomPorte = fichierPorte;
+	fichierPorte += ".txt";
+	ifstream FichierPorte(fichierPorte, ios::in);
+	//reinitialiseDonnees();
 
 	if (FichierPorte) {
+
 		if (!FichierPorte.fail()) {
 			int i = 0;
+			char character = ' ';
+			char source;
 			//getline(FichierPorte, temp);
 			while (!ws(FichierPorte).eof()) {
-				//Multimap? , multilinkedList
 				char temp = FichierPorte.get();
-				char character = ' ';
-				char source;
+				temp = FichierPorte.get();
+				
 				struct node nodeSource;
 				while(character != '\n'){
-					if (character == ' ');
+					if (character == ' ' || character == ',');
 					else {
-						character = FichierPorte.get();
 						source = character;
 						temp = FichierPorte.get();
 						temp = FichierPorte.get();
@@ -424,19 +507,22 @@ void lirePorte(string fichierPorte) {
 							}
 						}
 					}
-					temp = FichierPorte.get();
+					character = FichierPorte.get();
 				}
+				genererMotsInit();
 				if(temp != '}') temp = FichierPorte.get(); //lire }
-				
-				FichierPorte >> get<0>(portes[i]) >> get<1>(portes[i]); 
-				get<2>(portes[i]) = false;
+				string temp1;
+				string temp2;
+				FichierPorte >> temp1 >> temp2;
+				auto tempTuple = make_tuple(temp1, temp2, false);
+				portes.push_back(tempTuple);
 
 				i++;
 
 			}
 
-			verifierMDP(portes);
-			
+			verifierMDP();
+
 			cout << "Les fichiers ont ete lu correctement.\n";
 			FichierPorte.close();
 		}
@@ -448,9 +534,10 @@ void lirePorte(string fichierPorte) {
 }
 
 
+	
 int main()
 {
-	string porteChoisi;
+	string porteChoisie;
 	string porteCourrante;
 	string choixOption;
 	bool a = false;
@@ -458,6 +545,7 @@ int main()
 		menu();
 		cin >> choixOption;
 		cout << endl;
+		if (choixOption != "a" &&choixOption != "b" &&choixOption != "c" &&choixOption != "d") { cout << choixOption << " n'est pas une option valide\n"; }
 		if (choixOption == "a") {
 
 			reinitialiseDonnees();
@@ -468,12 +556,24 @@ int main()
 		if (choixOption == "b" && a == true) {
 			//afficherLeDernierEvenement();
 			cout << "Quelle porte voulez vous ouvrir?	(ex. Porte1)" << endl;
-			cin >> porteChoisi;
-			porteChoisi += ".txt";
-			lirePorte(porteChoisi);
+			cin >> porteChoisie ;
+			ouvrirPorte(porteChoisie);
+			listeMots;
 
-			//	ouvrirPorte(porteChoisi);
-			//
+			vector<tuple<string, string, bool>> portes;
+			bool estGouffre = true;
+			for (int i = 0; i < portes.size(); i++)
+			{
+				if (get<2>(portes[i]) == true) //portes.second = estValide
+					estGouffre = false;
+			}
+			ecrireEvenement(porteChoisie);
+			//afficherLeDernierEvenement();			//Marche pas
+
+			if (verifierMDP() == false)
+				choixOption = a;
+			reinitialiseDonnees();
+
 		}
 		else if (choixOption == "b" && a != true) { cout << "Il faut d'abord choisir l'option 'A' pour ouvrir une porte\n"; }
 
@@ -483,8 +583,9 @@ int main()
 		else if (choixOption == "c" && a != true) {
 			cout << "Il faut d'abord choisir l'option 'A' ";
 		}
-		if (choixOption != "a" &&choixOption != "b" &&choixOption != "c" &&choixOption != "d") { cout << choixOption << " n'est pas une option valide\n"; }
+		
 	}
 	return 0;
 }
+
 

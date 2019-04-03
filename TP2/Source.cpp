@@ -194,7 +194,7 @@ int main()
 
 			vector<tuple<string, string, bool>> portes;
 			bool estGouffre = true;
-			for (int i = 0; i < portes.size; i++)
+			for (int i = 0; i < portes.size(); i++)
 			{
 				if (get<2>(portes[i]) == true) //portes.second = estValide
 					estGouffre = false;
